@@ -7,11 +7,12 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "vuepress dev docs --temp .temp",
     "build": "vuepress build docs"
-  },  
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "moment": "^2.29.1",
     "vuepress": "^1.8.2"
   }
 }

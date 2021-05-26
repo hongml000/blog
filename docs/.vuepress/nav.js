@@ -11,5 +11,5 @@ module.exports = [
   },
   { 
     text: '关于我', link: '/about/' // 像介绍页，可以直接写在docs目录下，代表直接访问，对应的页面是：/docs/about.md
-  }
+  } 
 ]

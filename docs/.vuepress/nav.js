@@ -8,6 +8,7 @@ module.exports = [
     items: [
       {text: 'Vue', link: '/vueNotes/'},
       {text: 'React', link: '/reactNotes/base/1.createProject/'},
+      {text: 'Webpack', link: '/webpackNotes/1.first'},
 
     ]
   },

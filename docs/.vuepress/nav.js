@@ -1,7 +1,15 @@
 module.exports = [
   // 导航栏，有items代表着子导航
   { 
-    text: '问题记录', link: '/issuesRemark/' // 路由会默认访问/issuesRemark/，对应的页面是：/issuesRemark/README.md
+    text: '问题记录', link: '/issues/' // 路由会默认访问/issuesRemark/，对应的页面是：/issuesRemark/README.md
+  },
+  {
+    text: '技术类别', 
+    items: [
+      {text: 'Vue', link: '/vueNotes/'},
+      {text: 'React', link: '/reactNotes/base/1.createProject/'},
+
+    ]
   },
   {
     text: '个人博客', // 这种没有写link的，代表是不能点击跳转的

@@ -1,22 +1,4 @@
-# ele 组件注意的问题
-
-## 属性布尔值的处理
-
-当组件里，出现默认为 boolean 的属性值，写上一般就默认是默认值，不写就默认没有，不用赋值  
-如果一定要赋值，必须使用:v-bind 方法传
-
-```html
-<!-- 比如el-form里面的“hide-required-asterisk”属性，hide-required-asterisk默认是false，如果不写，就是按默认，不隐藏必填项的星号标识 -->
-<el-form ref="form" :model="sizeForm">
-  <el-form>
-    <!-- 写上就是为true，表示隐藏星号 -->
-    <el-form ref="form" :model="sizeForm" hide-required-asterisk>
-      <el-form>
-        <!-- 如果要动态绑定属性值，必须加上:绑定 -->
-        <el-form ref="form" :model="sizeForm" :hide-required-asterisk="true">
-          <el-form></el-form></el-form></el-form></el-form></el-form
-></el-form>
-```
+<!-- # ele 组件注意的问题 -->
 
 ## 时间树 el-timeline
 
@@ -81,22 +63,6 @@ el-tab-pane，如果标签名，使用自定义的样式，在 slot 的里面，
 }
 ```
 
-## el-select 宽度没跟 el-input 一致
-
-直接在 el-select 中 style 中直接写样式，跟 el-input 一致即可
-
-```HTML
-<el-select v-model="value" placeholder="请选择" style="width:320px;">
-    <el-option
-      v-for="item in options"
-      :key="item.value"
-      :label="item.label"
-      :value="item.value"
-      :disabled="item.disabled">
-    </el-option>
-  </el-select>
-```
-
 ## 表单校验
 
 如果只想做非空校验，只需在自定义中对于非空部分做校验，对于空部分，可以直接 callback()空，这样就不会做任何校验
@@ -149,7 +115,7 @@ el-tab-pane，如果标签名，使用自定义的样式，在 slot 的里面，
 </script>
 ```
 
-## 级联的懒加载的使用
+## el-cascader级联的懒加载的使用
 
 ```html
 <!-- 
@@ -275,4 +241,42 @@ methods: {
 }
 ```
 
+
+## el-cascader默认选择问题
+当清空`el-cascader v-model`值时，数据和选项都已经清空，但弹窗中的选项没有恢复默认值  
+解决：
+```html
+<el-cascader
+  expand-trigger="hover"
+  :options="options"
+  :key="cascaderKey"
+  v-if="selectedOptions2"
+  v-model="selectedOptions2"
+  @change="handleChange">
+</el-cascader>
+<script>
+export default {
+  created() {
+    // 初始值
+    selectedOptions2 = [11,22]
+  },
+  data() {
+    return {
+      selectedOptions2: [],
+      cascaderKey: 0
+    }
+  },
+  methods: {
+    clear() {
+      this.cascaderKey++;
+      this.selectedOptions2 = [11,22]
+    }
+  }
+}
+  
+</script>
+```
+
 ## el-date-picker 选择弹窗定位异常
+当存在多个`el-date-picker`时间组件时，使用`v-if`来切换，点击选择时间，弹窗定位会移到左上角。  
+解决方案：给每个时间组件添加不同的`key`值

@@ -1,3 +1,5 @@
+const nav = require("./nav");
+const sidebar = require("./sidebar");
 const moment = require('moment');
 moment.locale('zh-cn') // 默认是中文
 
@@ -32,27 +34,28 @@ module.exports = {
   theme: 'reco',
   // 主题配置
   themeConfig: {
-    type: 'blog',
-    blogConfig: {
-      category: {
-        location: 2, // 在导航栏菜单中所占的位置，默认2
-        text: '分类' // 默认 “分类”
-      },
-      tag: {
-        location: 3, // 在导航栏菜单中所占的位置，默认3
-        text: '标签' // 默认 “标签”
-      },
-      // socialLinks: [
-      //   { icon: 'reco-github', link: 'https://github.com/To2rk' },
-      // ]
-    },
+    // type: 'blog',
+    // blogConfig: {
+    //   category: {
+    //     location: 2, // 在导航栏菜单中所占的位置，默认2
+    //     text: '分类' // 默认 “分类”
+    //   },
+    //   tag: {
+    //     location: 3, // 在导航栏菜单中所占的位置，默认3
+    //     text: '标签' // 默认 “标签”
+    //   },
+    //   // socialLinks: [
+    //   //   { icon: 'reco-github', link: 'https://github.com/To2rk' },
+    //   // ]
+    // },
 
     // nav是导航栏内容
-    nav: require("./nav"),
+    nav: nav,
     // 侧边栏
-    // sidebar: require("./sidebar"),
-    subSidebar: 'auto',
-    sidebarDepth: 4,  // 侧边栏的层级数
+    sidebar: sidebar,
+    // sidebar: 'auto',
+    // displayAllHeaders: true,
+    sidebarDepth: 1,  // 侧边栏的层级数
     // 基于git的最后更新时间，将获取每个文件最后一次 git 提交的 UNIX 时间戳(ms)，同时它将以合适的日期格式显示在每一页的底部
     // 显示效果为： 最后更新: 5/25/2021, 4:50:23 PM
     lastUpdated: "最后更新",

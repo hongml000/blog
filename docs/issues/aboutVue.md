@@ -1,4 +1,4 @@
-# vue遇到的坑
+<!-- # vue遇到的坑 -->
 
 ## computed 里function不能直接传参
 computed里，属性方法是不能直接传参的，否则参数都会以vue对象显示，达不到想要的目的
